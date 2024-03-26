@@ -1,19 +1,14 @@
 
 %{
-int nmacro, nheader;
 %}
 %%
-"#define" {nmacro++;}
-"#include" {nheader++;}
-\n {}
+[6-9][0-9]{9} {printf("\n mobile number valid\n");}
+.+ {printf("\n mobile number invalid\n");}
 %%
 int yywrap()
-{
-return 1;
-}
+{}
 int main()
 {
-printf("enter the string:\n");
+printf("\n enter the mobile number:");
 yylex();
-printf("Number of macros defined = %d \n Number of header files included = %d\n",nmacro,nheader);
 }
